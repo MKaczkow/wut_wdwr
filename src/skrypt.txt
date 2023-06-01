@@ -1,9 +1,0 @@
-# Load data file
-data production.dat;
-
-# Solve the model using the solver (e.g., CPLEX)
-solve;
-
-# Display the optimal solution
-display Production;
-display Storage;

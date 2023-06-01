@@ -1,0 +1,13 @@
+# Load data file
+reset;
+option solver cplex;
+model D:\MojeDokumenty\Studia\mgr_1_sem\WDWR\projekt\solution\projekt.mod;
+data D:\MojeDokumenty\Studia\mgr_1_sem\WDWR\projekt\solution\production.dat;
+
+# Solve the model using the solver (e.g., CPLEX)
+solve;
+
+# Display the optimal solution
+display Production;
+display Storage;
+

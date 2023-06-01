@@ -1,29 +1,19 @@
-param production_time := 
-       0.4  0.6   0     0
-       0.2  0.1   0     0.6
-       0.1  0     0.7   0
-       0.06 0.04  0     0.05
-       0    0.05  0.02  0;
+# Data for Sets
+set Products := P1 P2 P3 P4;
+set Machines := Szlif Wier_Pion Wier_Poziom Frez Tok;
+set Months := "Styczen" "Luty" "Marzec";
 
-param mi :=
-	   9
-	   8
-	   7
-	   6
-	   
-param sigmas :=
-	   16 -2 -1 -3 
-	   -2  9 -4 -1
-	   -1 -4  4  1
-	   -3 -1  1  1	   	   
+# Data for Parameters
+param production_time:
+            Szlif  Wier_Pion  Wier_Poziom  Frez  Tok :=
+P1          0.4     0.2         0.1          0.06  0
+P2          0.6     0.1         0            0.04  0.05
+P3          0       0           0.7          0     0.02
+P4          0       0.6         0            0.05  0;
 
-param demand :=
-       200 0   100 200
-       300 100 200 200
-       0   300 100 200;
-
-param storage_capacity := 200;
-param storage_cost := 1;
-
-param min_inventory := 50;
-
+param market_constraints:
+           P1  P2  P3  P4 :=
+"Styczen"  200 0   100 200
+"Luty"     300 100 200 200
+"Marzec"   0   300 100 200
+;

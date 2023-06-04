@@ -1,31 +1,22 @@
 # Sets
 set Products;
 set Machines;
-set Months;
 
 # Parameters
-param production_time{Products, Machines};
-param market_constraints:
-           P1  P2  P3  P4 :=
-"Styczen"  200 0   100 200
-"Luty"     300 100 200 200
-"Marzec"   0   300 100 200
-;
+param TimeConstraint;  # Time constraint in hours
+param WorkDaysPerMonth;  # Number of workdays in a month
+param WorkHoursPerDay;  # Number of work hours per day
 
-# param market_constraints{Months, Products};
+param ProductionProcesses{Products, Machines};  # Production process requirements for each product and machine
+param MachineCapacity{Machines};  # Available capacity for each machine
 
 # Variables
-var production{Products} >= 0;  # Production of each product
-var sales{Months, Products} >= 0;  # Sales of each product in each month
+var Production{Products} >= 0;  # Amount of produced products
 
-# Constraints (if needed)
-# Add any additional constraints as required
-# 24 dni robocze * 8 godzin * 2 zmiany = 384
-subject to total_production_time:
-    sum {p in Products, m in Machines} production[p] * production_time[p,m] = 384;
-
-subject to market_limit{m in Months, p in Products}:
-    sales[m,p] <= market_constraints[m,p];
-    
 # Objective
-maximize total_production: sum{p in Products} production[p];
+maximize TotalProduction: sum{p in Products} Production[p];
+
+# Constraints
+subject to TimeConstraintLimit: sum{p in Products, m in Machines} ProductionProcesses[p, m] * Production[p] <= TimeConstraint;
+subject to WorkDaysLimit: sum{p in Products, m in Machines} ProductionProcesses[p, m] * Production[p] <= WorkDaysPerMonth * WorkHoursPerDay;
+subject to MachineCapacityLimit{m in Machines}: sum{p in Products} ProductionProcesses[p, m] * Production[p] <= MachineCapacity[m];

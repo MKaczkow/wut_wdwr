@@ -8,4 +8,4 @@ data D:\__repos\wut_wdwr\src\production.dat;
 solve;
 
 # Display the optimal solution
-display total_production;
+display Production;

@@ -3,9 +3,9 @@ set Machines := Szlif Wier_Pion Wier_Poziom Frez Tok;
 set Months := Styczen Luty Marzec;
 
 param TimeConstraint := 480;  # 3 months * 20 days * 8 hours
-
 param WorkDaysPerMonth := 20;
 param WorkHoursPerDay := 8;
+param PricePerSingleItem = 1; # normally -> t-student distribution
 
 param ProductionProcesses:
            Szlif  Wier_Pion  Wier_Poziom  Frez  Tok :=
@@ -14,7 +14,7 @@ P2          0.6     0.1         0            0.04  0.05
 P3          0       0           0.7          0     0.02
 P4          0       0.6         0            0.05  0;
 
-param MachineCapacity :=
+param MachinesAvailable :=
 Szlif 4
 Wier_Pion 2
 Wier_Poziom 3

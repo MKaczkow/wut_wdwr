@@ -1,5 +1,6 @@
 set Products := P1 P2 P3 P4;
 set Machines := Szlif Wier_Pion Wier_Poziom Frez Tok;
+set Months := Styczen Luty Marzec;
 
 param TimeConstraint := 480;  # 3 months * 20 days * 8 hours
 
@@ -19,3 +20,9 @@ Wier_Pion 2
 Wier_Poziom 3
 Frez 1
 Tok 1;
+
+param SalesConstraints:
+          P1   P2   P3   P4 :=
+Styczen    200  0    100  200
+Luty       300  100  200  200
+Marzec     0    300  100  200;

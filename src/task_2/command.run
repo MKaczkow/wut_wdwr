@@ -1,0 +1,11 @@
+# Load data file
+reset;
+option solver cplex;
+model D:\__repos\wut_wdwr\src\task_2\projekt.mod;
+data D:\__repos\wut_wdwr\src\task_2\production.dat;
+
+# Solve the model using the solver (e.g., CPLEX)
+solve;
+
+# Display the optimal solution
+display Production;

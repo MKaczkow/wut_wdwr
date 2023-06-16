@@ -24,8 +24,8 @@ var Production{Products, Months} >= 0;
 
 # Objective
 maximize TotalProfitWithRiskAccounted: 
-	sum{prod in Products, mont in Months, scen in Scenarios} 
-		(Production[prod, mont] * ItemPriceExpectedValue[prod] - AverageDeviationRisk[scen]);
+	sum{prod in Products, mont in Months} 
+		(Production[prod, mont] * ItemPriceExpectedValue[prod] - AverageDeviationRisk['S4']); # S1, S2, S3
 
 # Constraints
 subject to 

@@ -3,7 +3,7 @@ from math import gamma
 import operator
 
 
-def calculate_expected_value(mean, std, dof, alpha, beta):
+def calculate_expected_value_t_student(mean, std, dof, alpha, beta):
 
     a = (alpha - mean) / std
     b = (beta - mean) / std
